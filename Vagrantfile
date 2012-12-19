@@ -1,9 +1,5 @@
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
-
 Vagrant::Config.run do |config|
-  config.ssh.forward_x11 = :true
-  config.vm.box = "lucid32"
-  config.vm.box_url = "http://files.vagrantup.com/lucid32.box"
-  config.vm.provision :puppet
+    config.vm.box = "lucid64"
+    config.vm.box_url = "http://dl.dropbox.com/u/4031118/Vagrant/ubuntu-12.04.1-server-i686-virtual.box"
+    config.vm.provision :puppet, :options => "--verbose --debug"
 end
