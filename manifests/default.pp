@@ -9,30 +9,11 @@ exec { 'apt-get update':
   require => Apt::Ppa["ppa:webupd8team/java"]
 }
 
-jenkins::plugin { 'git': 
 
+$jenkinsPlugins = ['git', 'git-server', 'jenkow-plugin' , 'async-job', 'database', 'git-client', 'jenkow-activiti-designer', 'jenkow-activiti-explorer']
+jenkins::plugin { $jenkinsPlugins:
+    notify => Class[jenkins::service]
 }
-
-
-jenkins::plugin { 'jenkow-plugin': 
-}
-
-jenkins::plugin { 'async-job': 
-}
-
-jenkins::plugin { 'git-server': 
-}
-
-jenkins::plugin { 'database': 
-
-}
-
-jenkins::plugin { 'git-client': 
-
-}
-
-Jenkins::Plugin { notify => Class[jenkins::service] }
-
 
 exec {
   "accept_license":
