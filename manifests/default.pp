@@ -37,7 +37,7 @@ package { "oracle-java7-installer":
 
 package { "maven":
     ensure => "installed",
-    before => Package["oracle-java7-installer"]
+    require => Package["oracle-java7-installer"]
 }
 
 
