@@ -1,4 +1,3 @@
- /*  include postgresql::server */
 class { 'postgresql::server':
   config_hash => {
     'ip_mask_deny_postgres_user' => '0.0.0.0/32',
@@ -10,23 +9,9 @@ class { 'postgresql::server':
   },
 }
 
-/*class { 'postgresql':
-
-}*/
-/*-> class { 'postgresql::server':
-}*/
-
-
-/*
-$reqPackages = [ "postgresql84-server" ]
-
-package { 
-    $reqPackages: ensure => "installed"
-} */
-
 postgresql::db { 'junit':
-  user     => 'aa',
-  password => 'aa'
+  user     => 'junituser',
+  password => 'junituser'
 }
 
 
