@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/sh -e 
 
 # Directory in which librarian-puppet should manage its modules directory
 PUPPET_DIR=/etc/puppet/
