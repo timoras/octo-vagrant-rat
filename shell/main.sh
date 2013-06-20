@@ -11,14 +11,14 @@ YUM=/usr/sbin/yum
 if [ ! -x $GIT ]; then
   
     yum -q -y makecache
-	yum -q -y install git
+    yum -q -y install git
   
 fi
 
 cp /vagrant/puppet/Puppetfile $PUPPET_DIR
 
 if [ "$(gem search -i librarian-puppet)" = "false" ]; then
-  gem install librarian-puppet
+  gem install librarian-puppet --no-ri --no-rdoc
   cd $PUPPET_DIR && librarian-puppet install --clean
 else
   cd $PUPPET_DIR && librarian-puppet update
