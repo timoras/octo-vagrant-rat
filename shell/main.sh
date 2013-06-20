@@ -6,10 +6,9 @@ mkdir -p $PUPPET_DIR
 # NB: librarian-puppet might need git installed. If it is not already installed
 # in your basebox, this will manually install it at this point using apt or yum
 GIT=/usr/bin/git
-APT_GET=/usr/bin/apt-get
 YUM=/usr/sbin/yum
+
 if [ ! -x $GIT ]; then
-  
     yum -q -y makecache
     yum -q -y install git
   
