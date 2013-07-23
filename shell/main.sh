@@ -8,16 +8,9 @@ mkdir -p $PUPPET_DIR
 GIT=/usr/bin/git
 APT_GET=/usr/bin/apt-get
 YUM=/usr/sbin/yum
-if [ ! -x $GIT ]; then
-    if [ -x $YUM ]; then
-        yum -q -y makecache
-        yum -q -y install git
-    elif [ -x $APT_GET ]; then
-        apt-get -q -y update
-        apt-get -q -y install git
-    else
-        echo "No package installer available. You may need to install git manually."
-    fi
+if [ ! -x $GIT ]; then    
+	apt-get -q -y update
+    apt-get -q -y install git    
 fi
 
 cp /vagrant/puppet/Puppetfile $PUPPET_DIR
@@ -28,3 +21,17 @@ if [ "$(gem search -i librarian-puppet)" = "false" ]; then
 else
   cd $PUPPET_DIR && librarian-puppet update
 fi
+
+
+
+if [ ! -d /opt/gerrit ]; then    
+   mkdir /opt/gerrit
+   chmod 777 /opt/gerrit
+fi
+
+if [ ! -d /opt/gerrit/review_site ]; then    
+   mkdir /opt/gerrit/review_site
+   chmod 777 /opt/gerrit/review_site
+fi
+
+
