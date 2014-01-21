@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
     config.vm.provision :puppet
     config.vm.provider "virtualbox" do |v|        
         v.name = "centos_postgress"
-        v.gui = true
+#        v.gui = true
         v.customize ["modifyvm", :id, "--memory", "1024"]
     end
 
